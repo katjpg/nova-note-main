@@ -1,0 +1,794 @@
+{
+  "nodes": [
+    {
+      "id": "Today's Lab Demo",
+      "type": "Topic"
+    },
+    {
+      "id": "python",
+      "type": "Method"
+    },
+    {
+      "id": "Center-embedded sentences",
+      "type": "Topic"
+    },
+    {
+      "id": "Double embedding",
+      "type": "Method"
+    },
+    {
+      "id": "Triple embedding",
+      "type": "Method"
+    },
+    {
+      "id": "Processing difficulty",
+      "type": "Concept"
+    },
+    {
+      "id": "Memory Load",
+      "type": "Concept"
+    },
+    {
+      "id": "Single embedding",
+      "type": "Method"
+    },
+    {
+      "id": "Critical Questions",
+      "type": "Topic"
+    },
+    {
+      "id": "Key Terms to Review",
+      "type": "Topic"
+    },
+    {
+      "id": "Semantic integration",
+      "type": "Concept"
+    },
+    {
+      "id": "Reasoning",
+      "type": "Topic"
+    },
+    {
+      "id": "Complete language processing assignment",
+      "type": "Method"
+    },
+    {
+      "id": "Role of context in meaning",
+      "type": "Theory"
+    },
+    {
+      "id": "Next Week's Topics",
+      "type": "Topic"
+    },
+    {
+      "id": "BERT",
+      "type": "Method"
+    },
+    {
+      "id": "Language development disorders",
+      "type": "Concept"
+    },
+    {
+      "id": "Neural basis of language",
+      "type": "Concept"
+    },
+    {
+      "id": "Syntactic parsing",
+      "type": "Concept"
+    },
+    {
+      "id": "Practice Python data analysis",
+      "type": "Method"
+    },
+    {
+      "id": "Lab Requirements",
+      "type": "Topic"
+    },
+    {
+      "id": "ERP Components",
+      "type": "Topic"
+    },
+    {
+      "id": "N400",
+      "type": "Concept"
+    },
+    {
+      "id": "Research Directions",
+      "type": "Topic"
+    },
+    {
+      "id": "Decision Making",
+      "type": "Topic"
+    },
+    {
+      "id": "Neural correlates of bilingualism",
+      "type": "Theory"
+    },
+    {
+      "id": "Questions for Office Hours",
+      "type": "Topic"
+    },
+    {
+      "id": "Personal Reminders",
+      "type": "Topic"
+    },
+    {
+      "id": "Problem Solving",
+      "type": "Topic"
+    },
+    {
+      "id": "Bring headphones",
+      "type": "Method"
+    },
+    {
+      "id": "Language understanding",
+      "type": "Concept"
+    },
+    {
+      "id": "Transformers",
+      "type": "Method"
+    },
+    {
+      "id": "Priming Effects",
+      "type": "Topic"
+    },
+    {
+      "id": "Therapeutic interventions",
+      "type": "Method"
+    },
+    {
+      "id": "Text generation",
+      "type": "Concept"
+    },
+    {
+      "id": "Review ERP methodology",
+      "type": "Method"
+    },
+    {
+      "id": "Meet with study group",
+      "type": "Method"
+    },
+    {
+      "id": "Garden path resolution",
+      "type": "Concept"
+    },
+    {
+      "id": "Clinical Relevance",
+      "type": "Topic"
+    },
+    {
+      "id": "Key Applications",
+      "type": "Topic"
+    },
+    {
+      "id": "GPT architecture",
+      "type": "Method"
+    },
+    {
+      "id": "Universal grammar vs. statistical learning",
+      "type": "Theory"
+    },
+    {
+      "id": "Pragmatic inference",
+      "type": "Concept"
+    },
+    {
+      "id": "Development of language",
+      "type": "Concept"
+    },
+    {
+      "id": "Modern Approaches",
+      "type": "Topic"
+    },
+    {
+      "id": "Clarify bottom-up vs top-down processing in language",
+      "type": "Theory"
+    },
+    {
+      "id": "Language disorders",
+      "type": "Concept"
+    },
+    {
+      "id": "Install required software",
+      "type": "Method"
+    },
+    {
+      "id": "Spreading Activation",
+      "type": "Method"
+    },
+    {
+      "id": "Semantic priming",
+      "type": "Concept"
+    },
+    {
+      "id": "Aphasia treatment",
+      "type": "Method"
+    },
+    {
+      "id": "Assistive technologies",
+      "type": "Method"
+    },
+    {
+      "id": "Complete consent forms",
+      "type": "Method"
+    },
+    {
+      "id": "Cognitive rehabilitation",
+      "type": "Method"
+    },
+    {
+      "id": "Semantic Networks",
+      "type": "Topic"
+    },
+    {
+      "id": "Statistical learning mechanisms",
+      "type": "Theory"
+    },
+    {
+      "id": "P600",
+      "type": "Concept"
+    },
+    {
+      "id": "Treatment Approaches",
+      "type": "Topic"
+    },
+    {
+      "id": "Reading disabilities",
+      "type": "Concept"
+    },
+    {
+      "id": "Bilingual processing advantages",
+      "type": "Theory"
+    },
+    {
+      "id": "Translation",
+      "type": "Concept"
+    },
+    {
+      "id": "Parietal Lobe",
+      "type": "Concept"
+    },
+    {
+      "id": "Anterior Cingulate",
+      "type": "Concept"
+    },
+    {
+      "id": "Brain Regions",
+      "type": "Topic"
+    },
+    {
+      "id": "Prefrontal Cortex",
+      "type": "Concept"
+    },
+    {
+      "id": "5.8",
+      "type": "Evidence"
+    },
+    {
+      "id": "0.023",
+      "type": "Evidence"
+    },
+    {
+      "id": "7.2",
+      "type": "Evidence"
+    },
+    {
+      "id": "Observations",
+      "type": "Method"
+    },
+    {
+      "id": "experimental_group",
+      "type": "Concept"
+    },
+    {
+      "id": "final paper",
+      "type": "Topic"
+    },
+    {
+      "id": "control_group",
+      "type": "Concept"
+    },
+    {
+      "id": "p_value",
+      "type": "Concept"
+    },
+    {
+      "id": "Synaptic Plasticity",
+      "type": "Concept"
+    },
+    {
+      "id": "Types of Learning",
+      "type": "Topic"
+    },
+    {
+      "id": "Basic Neural Network Components",
+      "type": "Topic"
+    },
+    {
+      "id": "How neural networks adjust connection weights to minimize error",
+      "type": "Evidence"
+    },
+    {
+      "id": "Hidden Layer(s)",
+      "type": "Concept"
+    },
+    {
+      "id": "Output Layer",
+      "type": "Concept"
+    },
+    {
+      "id": "Unsupervised Learning",
+      "type": "Concept"
+    },
+    {
+      "id": "Input Layer",
+      "type": "Concept"
+    },
+    {
+      "id": "Reinforcement Learning",
+      "type": "Concept"
+    },
+    {
+      "id": "Backpropagation",
+      "type": "Concept"
+    },
+    {
+      "id": "Long-term potentiation (LTP) strengthens connections between neurons through repeated activation",
+      "type": "Evidence"
+    },
+    {
+      "id": "Supervised Learning",
+      "type": "Concept"
+    },
+    {
+      "id": "Key Concept",
+      "type": "Topic"
+    },
+    {
+      "id": "input_vector",
+      "type": "Concept"
+    },
+    {
+      "id": "return 1 if activation > 0 else 0",
+      "type": "Concept"
+    },
+    {
+      "id": "weights",
+      "type": "Concept"
+    },
+    {
+      "id": "activation = sum(x*w for x,w in zip(input_vector, weights))",
+      "type": "Concept"
+    },
+    {
+      "id": "perceptron",
+      "type": "Method"
+    },
+    {
+      "id": "Week 12",
+      "type": "Topic"
+    },
+    {
+      "id": "Practice implementing basic perceptron",
+      "type": "Method"
+    },
+    {
+      "id": "Presentation prep",
+      "type": "Method"
+    },
+    {
+      "id": "Complexity emerges from simple rules",
+      "type": "Theory"
+    },
+    {
+      "id": "Data collection",
+      "type": "Method"
+    },
+    {
+      "id": "Week 10",
+      "type": "Topic"
+    },
+    {
+      "id": "class discussion highlight",
+      "type": "Evidence"
+    },
+    {
+      "id": "Review backpropagation math",
+      "type": "Method"
+    },
+    {
+      "id": "Neural network implementations",
+      "type": "Topic"
+    },
+    {
+      "id": "Study Group Meeting",
+      "type": "Concept"
+    },
+    {
+      "id": "neural network simulator",
+      "type": "Concept"
+    },
+    {
+      "id": "Download neural network simulator",
+      "type": "Method"
+    },
+    {
+      "id": "Week 11",
+      "type": "Topic"
+    },
+    {
+      "id": "basic perceptron",
+      "type": "Concept"
+    },
+    {
+      "id": "Analysis",
+      "type": "Method"
+    },
+    {
+      "id": "backpropagation math",
+      "type": "Concept"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Memory Load",
+      "target": "Center-embedded sentences",
+      "type": "RELATES_TO"
+    },
+    {
+      "source": "Processing difficulty",
+      "target": "Single embedding",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "Processing difficulty",
+      "target": "Double embedding",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "Processing difficulty",
+      "target": "Triple embedding",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "Today's Lab Demo",
+      "target": "python",
+      "type": "RELATES_TO"
+    },
+    {
+      "source": "N400",
+      "target": "ERP Components",
+      "type": "PART_OF"
+    },
+    {
+      "source": "P600",
+      "target": "ERP Components",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Semantic Networks",
+      "target": "Spreading Activation",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "Semantic priming",
+      "target": "Priming Effects",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Transformers",
+      "target": "Modern Approaches",
+      "type": "PART_OF"
+    },
+    {
+      "source": "BERT",
+      "target": "Modern Approaches",
+      "type": "PART_OF"
+    },
+    {
+      "source": "GPT architecture",
+      "target": "Modern Approaches",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Language understanding",
+      "target": "Key Applications",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Translation",
+      "target": "Key Applications",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Text generation",
+      "target": "Key Applications",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Universal grammar vs. statistical learning",
+      "target": "Critical Questions",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Role of context in meaning",
+      "target": "Critical Questions",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Bilingual processing advantages",
+      "target": "Critical Questions",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Neural basis of language",
+      "target": "Research Directions",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Development of language",
+      "target": "Research Directions",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Language disorders",
+      "target": "Research Directions",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Aphasia treatment",
+      "target": "Clinical Relevance",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Language development disorders",
+      "target": "Clinical Relevance",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Reading disabilities",
+      "target": "Clinical Relevance",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Cognitive rehabilitation",
+      "target": "Treatment Approaches",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Assistive technologies",
+      "target": "Treatment Approaches",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Therapeutic interventions",
+      "target": "Treatment Approaches",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Decision Making",
+      "target": "Next Week's Topics",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Reasoning",
+      "target": "Next Week's Topics",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Problem Solving",
+      "target": "Next Week's Topics",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Syntactic parsing",
+      "target": "Key Terms to Review",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Semantic integration",
+      "target": "Key Terms to Review",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Pragmatic inference",
+      "target": "Key Terms to Review",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Garden path resolution",
+      "target": "Key Terms to Review",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Clarify bottom-up vs top-down processing in language",
+      "target": "Questions for Office Hours",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Neural correlates of bilingualism",
+      "target": "Questions for Office Hours",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Statistical learning mechanisms",
+      "target": "Questions for Office Hours",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Complete language processing assignment",
+      "target": "Personal Reminders",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Review ERP methodology",
+      "target": "Personal Reminders",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Practice Python data analysis",
+      "target": "Personal Reminders",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Meet with study group",
+      "target": "Personal Reminders",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Bring headphones",
+      "target": "Lab Requirements",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Install required software",
+      "target": "Lab Requirements",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Complete consent forms",
+      "target": "Lab Requirements",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Brain Regions",
+      "target": "Prefrontal Cortex",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Brain Regions",
+      "target": "Parietal Lobe",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Brain Regions",
+      "target": "Anterior Cingulate",
+      "type": "PART_OF"
+    },
+    {
+      "source": "control_group",
+      "target": "7.2",
+      "type": "RELATES_TO"
+    },
+    {
+      "source": "experimental_group",
+      "target": "5.8",
+      "type": "RELATES_TO"
+    },
+    {
+      "source": "p_value",
+      "target": "0.023",
+      "type": "RELATES_TO"
+    },
+    {
+      "source": "Observations",
+      "target": "final paper",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "Basic Neural Network Components",
+      "target": "Input Layer",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Basic Neural Network Components",
+      "target": "Hidden Layer(s)",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Basic Neural Network Components",
+      "target": "Output Layer",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Synaptic Plasticity",
+      "target": "Long-term potentiation (LTP) strengthens connections between neurons through repeated activation",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "Types of Learning",
+      "target": "Supervised Learning",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Types of Learning",
+      "target": "Unsupervised Learning",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Types of Learning",
+      "target": "Reinforcement Learning",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Key Concept",
+      "target": "Backpropagation",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "Backpropagation",
+      "target": "How neural networks adjust connection weights to minimize error",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "perceptron",
+      "target": "activation = sum(x*w for x,w in zip(input_vector, weights))",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "perceptron",
+      "target": "return 1 if activation > 0 else 0",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "perceptron",
+      "target": "input_vector",
+      "type": "RELATES_TO"
+    },
+    {
+      "source": "perceptron",
+      "target": "weights",
+      "type": "RELATES_TO"
+    },
+    {
+      "source": "Data collection",
+      "target": "Week 10",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Analysis",
+      "target": "Week 11",
+      "type": "PART_OF"
+    },
+    {
+      "source": "Presentation prep",
+      "target": "Week 12",
+      "type": "PART_OF"
+    },
+    {
+      "source": "neural network simulator",
+      "target": "Download neural network simulator",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "basic perceptron",
+      "target": "Practice implementing basic perceptron",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "backpropagation math",
+      "target": "Review backpropagation math",
+      "type": "DESCRIBES"
+    },
+    {
+      "source": "Complexity emerges from simple rules",
+      "target": "class discussion highlight",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "Neural network implementations",
+      "target": "Study Group Meeting",
+      "type": "RELATES_TO"
+    }
+  ]
+}

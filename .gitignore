@@ -1,0 +1,131 @@
+# Dependencies
+frontend/node_modules/
+frontend/.pnp
+frontend/.pnp.js
+
+# Build outputs
+frontend/build/
+frontend/dist/
+frontend/**/*.js.map
+
+# TypeScript
+frontend/**/*.tsbuildinfo
+
+# Testing
+frontend/coverage/
+frontend/.nyc_output/
+
+# Environment
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Debug logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log
+
+# IDE and Editor
+frontend/.vscode/
+frontend/.idea/
+frontend/**/*.swp
+frontend/**/*.swo
+
+# Cache
+frontend/.cache/
+frontend/.parcel-cache/
+
+# Misc
+frontend/.DS_Store
+frontend/Thumbs.db
+frontend/**/.DS_Store
+
+# Python virtual environments
+backend/venv/
+backend/env/
+backend/.env/
+backend/.venv/
+backend/ENV/
+
+# Python cache files
+backend/**/__pycache__/
+backend/**/*.py[cod]
+backend/**/*$py.class
+backend/**/*.so
+
+# Distribution / packaging
+backend/dist/
+backend/build/
+backend/eggs/
+backend/*.egg-info/
+backend/.eggs/
+backend/wheels/
+backend/share/python-wheels/
+backend/develop-eggs/
+backend/downloads/
+backend/parts/
+backend/sdist/
+backend/var/
+backend/lib/
+backend/lib64/
+
+# Environment variables
+backend/.env
+backend/.env.local
+backend/.env.development
+backend/.env.test
+backend/.env.production
+
+# IDE specific
+backend/.idea/
+backend/.vscode/
+backend/**/*.swp
+backend/**/*.swo
+backend/**/*.swn
+backend/.pytest_cache/
+
+# Logs and databases
+backend/*.log
+backend/*.sqlite3
+backend/*.db
+backend/logs/
+
+# Coverage reports
+backend/.coverage
+backend/htmlcov/
+backend/.tox/
+backend/.nox/
+backend/.coverage.*
+backend/coverage.xml
+backend/*.cover
+backend/.hypothesis/
+
+# mypy
+backend/.mypy_cache/
+backend/.dmypy.json
+backend/dmypy.json
+
+# Jupyter Notebook
+backend/.ipynb_checkpoints/
+
+# Local development settings
+backend/local_settings.py
+
+# Migration files (if you want to ignore them)
+# backend/**/migrations/*.py
+# backend/**/migrations/*.pyc
+
+# chromadb specific
+backend/chroma/
+backend/chroma_db/
+backend/chroma_data/
+backend/**/.chroma/
+backend/**/chroma.sqlite3
+backend/**/chroma_logs.log
+backend/index_data/
+backend/**/*.parquet
+backend/**/*.bin
+backend/**/embedding_data/
+backend/chromadb/
