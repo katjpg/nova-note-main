@@ -1,0 +1,224 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Memory Load", "label": "Memory Load", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#fc9e27", "font": {"size": 12}, "id": "Center-embedded sentences", "label": "Center-embedded sentences", "shape": "dot", "size": 25, "title": "Type: Topic", "type": "Topic"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "Today\u0027s Lab Demo", "label": "Today\u0027s Lab Demo", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#cf1a05", "font": {"size": 12}, "id": "Processing difficulty", "label": "Processing difficulty", "shape": "dot", "size": 25, "title": "Type: Finding", "type": "Finding"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "Single embedding", "label": "Single embedding", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "Double embedding", "label": "Double embedding", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "Triple embedding", "label": "Triple embedding", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Research Directions", "label": "Research Directions", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Neural basis of language", "label": "Neural basis of language", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Development of language", "label": "Development of language", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Language disorders", "label": "Language disorders", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#96c5d2", "font": {"size": 12}, "id": "Group Data Collection", "label": "Group Data Collection", "shape": "dot", "size": 25, "title": "Type: Study", "type": "Study"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "Participants tested", "label": "Participants tested", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "Average response time", "label": "Average response time", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "Accuracy rate", "label": "Accuracy rate", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Semantic Networks", "label": "Semantic Networks", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "Spreading Activation", "label": "Spreading Activation", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Network Properties", "label": "Network Properties", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Treatment Approaches", "label": "Treatment Approaches", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Cognitive rehabilitation", "label": "Cognitive rehabilitation", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Assistive technologies", "label": "Assistive technologies", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Therapeutic interventions", "label": "Therapeutic interventions", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "ERP Components", "label": "ERP Components", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "N400", "label": "N400", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "P600", "label": "P600", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Key Terms to Review", "label": "Key Terms to Review", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Syntactic parsing", "label": "Syntactic parsing", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Semantic integration", "label": "Semantic integration", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Pragmatic inference", "label": "Pragmatic inference", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Garden path resolution", "label": "Garden path resolution", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Key Applications", "label": "Key Applications", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Language understanding", "label": "Language understanding", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Translation", "label": "Translation", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Text generation", "label": "Text generation", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Priming Effects", "label": "Priming Effects", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "Semantic priming", "label": "Semantic priming", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "Associative priming", "label": "Associative priming", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "Categorical priming", "label": "Categorical priming", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Clinical Relevance", "label": "Clinical Relevance", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Aphasia treatment", "label": "Aphasia treatment", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Language development disorders", "label": "Language development disorders", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Reading disabilities", "label": "Reading disabilities", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#fc9e27", "font": {"size": 12}, "id": "Natural Language Processing", "label": "Natural Language Processing", "shape": "dot", "size": 25, "title": "Type: Topic", "type": "Topic"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "Transformers", "label": "Transformers", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "BERT", "label": "BERT", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "GPT architecture", "label": "GPT architecture", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#fc9e27", "font": {"size": 12}, "id": "Next Week\u0027s Topics", "label": "Next Week\u0027s Topics", "shape": "dot", "size": 25, "title": "Type: Topic", "type": "Topic"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Decision Making", "label": "Decision Making", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Reasoning", "label": "Reasoning", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Problem Solving", "label": "Problem Solving", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Backpropagation", "label": "Backpropagation", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "How neural networks adjust connection weights to minimize error", "label": "How neural networks adjust connection weights to minimize error", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Long-term potentiation (LTP)", "label": "Long-term potentiation (LTP)", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "learning at the cellular level", "label": "learning at the cellular level", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Basic Neural Network Components", "label": "Basic Neural Network Components", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Input Layer", "label": "Input Layer", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Hidden Layer(s)", "label": "Hidden Layer(s)", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Output Layer", "label": "Output Layer", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Types of Learning", "label": "Types of Learning", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Supervised Learning", "label": "Supervised Learning", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Unsupervised Learning", "label": "Unsupervised Learning", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Reinforcement Learning", "label": "Reinforcement Learning", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Key Concept", "label": "Key Concept", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Synaptic Plasticity", "label": "Synaptic Plasticity", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "activation", "label": "activation", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "perceptron", "label": "perceptron", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "sum(x*w for x,w in zip(input_vector, weights))", "label": "sum(x*w for x,w in zip(input_vector, weights))", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "input_vector, weights", "label": "input_vector, weights", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "return 1 if activation \u003e 0 else 0", "label": "return 1 if activation \u003e 0 else 0", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "implementing basic perceptron", "label": "implementing basic perceptron", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#fc9e27", "font": {"size": 12}, "id": "Review backpropagation math", "label": "Review backpropagation math", "shape": "dot", "size": 25, "title": "Type: Topic", "type": "Topic"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#cc656e", "font": {"size": 12}, "id": "Complexity emerges from simple rules", "label": "Complexity emerges from simple rules", "shape": "dot", "size": 25, "title": "Type: Theory", "type": "Theory"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#cf1a05", "font": {"size": 12}, "id": "class discussion highlight", "label": "class discussion highlight", "shape": "dot", "size": 25, "title": "Type: Finding", "type": "Finding"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "Analysis", "label": "Analysis", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "Presentation prep", "label": "Presentation prep", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#92654f", "font": {"size": 12}, "id": "Data collection", "label": "Data collection", "shape": "dot", "size": 25, "title": "Type: Method", "type": "Method"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "neural network simulator", "label": "neural network simulator", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#fc9e27", "font": {"size": 12}, "id": "Brain Regions", "label": "Brain Regions", "shape": "dot", "size": 25, "title": "Type: Topic", "type": "Topic"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Prefrontal Cortex", "label": "Prefrontal Cortex", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Parietal Lobe", "label": "Parietal Lobe", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Anterior Cingulate", "label": "Anterior Cingulate", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "control_group", "label": "control_group", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#cf1a05", "font": {"size": 12}, "id": "7.2", "label": "7.2", "shape": "dot", "size": 25, "title": "Type: Finding", "type": "Finding"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Observations", "label": "Observations", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#cf1a05", "font": {"size": 12}, "id": "Need to incorporate these findings into final paper", "label": "Need to incorporate these findings into final paper", "shape": "dot", "size": 25, "title": "Type: Finding", "type": "Finding"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "experimental_group", "label": "experimental_group", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#cf1a05", "font": {"size": 12}, "id": "5.8", "label": "5.8", "shape": "dot", "size": 25, "title": "Type: Finding", "type": "Finding"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#b25c4c", "font": {"size": 12}, "id": "p_value", "label": "p_value", "shape": "dot", "size": 25, "title": "Type: Variable", "type": "Variable"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#cf1a05", "font": {"size": 12}, "id": "0.023", "label": "0.023", "shape": "dot", "size": 25, "title": "Type: Finding", "type": "Finding"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#96c5d2", "font": {"size": 12}, "id": "Chapter 9", "label": "Chapter 9", "shape": "dot", "size": 25, "title": "Type: Study", "type": "Study"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#96c5d2", "font": {"size": 12}, "id": "Supplementary paper on bilingualism", "label": "Supplementary paper on bilingualism", "shape": "dot", "size": 25, "title": "Type: Study", "type": "Study"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Neural correlates of bilingualism", "label": "Neural correlates of bilingualism", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#96c5d2", "font": {"size": 12}, "id": "Review statistical methods", "label": "Review statistical methods", "shape": "dot", "size": 25, "title": "Type: Study", "type": "Study"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Statistical learning mechanisms", "label": "Statistical learning mechanisms", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#9b51f0", "font": {"size": 12}, "id": "Clarify bottom-up vs top-down processing in language", "label": "Clarify bottom-up vs top-down processing in language", "shape": "dot", "size": 25, "title": "Type: Concept", "type": "Concept"}, {"borderWidth": 2, "borderWidthSelected": 4, "color": "#fc9e27", "font": {"size": 12}, "id": "Neural network implementations", "label": "Neural network implementations", "shape": "dot", "size": 25, "title": "Type: Topic", "type": "Topic"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Memory Load", "smooth": {"type": "continuous"}, "title": "Relationship: RELATES_TO", "to": "Center-embedded sentences", "type": "RELATES_TO", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Today\u0027s Lab Demo", "smooth": {"type": "continuous"}, "title": "Relationship: SUPPORTS", "to": "Processing difficulty", "type": "SUPPORTS", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Processing difficulty", "smooth": {"type": "continuous"}, "title": "Relationship: EXTENDS", "to": "Memory Load", "type": "EXTENDS", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Processing difficulty", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Single embedding", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Processing difficulty", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Double embedding", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Processing difficulty", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Triple embedding", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Research Directions", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Neural basis of language", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Research Directions", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Development of language", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Research Directions", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Language disorders", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Group Data Collection", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Participants tested", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Group Data Collection", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Average response time", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Group Data Collection", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Accuracy rate", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Semantic Networks", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Spreading Activation", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Semantic Networks", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Network Properties", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Treatment Approaches", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Cognitive rehabilitation", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Treatment Approaches", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Assistive technologies", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Treatment Approaches", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Therapeutic interventions", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "ERP Components", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "N400", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "ERP Components", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "P600", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Key Terms to Review", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Syntactic parsing", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Key Terms to Review", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Semantic integration", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Key Terms to Review", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Pragmatic inference", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Key Terms to Review", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Garden path resolution", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Key Applications", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Language understanding", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Key Applications", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Translation", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Key Applications", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Text generation", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Priming Effects", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Semantic priming", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Priming Effects", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Associative priming", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Priming Effects", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Categorical priming", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Clinical Relevance", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Aphasia treatment", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Clinical Relevance", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Language development disorders", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Clinical Relevance", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Reading disabilities", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Natural Language Processing", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Transformers", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Natural Language Processing", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "BERT", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Natural Language Processing", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "GPT architecture", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Next Week\u0027s Topics", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Decision Making", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Next Week\u0027s Topics", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Reasoning", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Next Week\u0027s Topics", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Problem Solving", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Backpropagation", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "How neural networks adjust connection weights to minimize error", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Long-term potentiation (LTP)", "smooth": {"type": "continuous"}, "title": "Relationship: SUPPORTS", "to": "learning at the cellular level", "type": "SUPPORTS", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Basic Neural Network Components", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "Input Layer", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Basic Neural Network Components", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "Hidden Layer(s)", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Basic Neural Network Components", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "Output Layer", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Types of Learning", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "Supervised Learning", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Types of Learning", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "Unsupervised Learning", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Types of Learning", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "Reinforcement Learning", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Key Concept", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Backpropagation", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Synaptic Plasticity", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "Long-term potentiation (LTP)", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "activation", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "perceptron", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "activation", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "sum(x*w for x,w in zip(input_vector, weights))", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "perceptron", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "input_vector, weights", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "perceptron", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "return 1 if activation \u003e 0 else 0", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "implementing basic perceptron", "smooth": {"type": "continuous"}, "title": "Relationship: RELATES_TO", "to": "Review backpropagation math", "type": "RELATES_TO", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Complexity emerges from simple rules", "smooth": {"type": "continuous"}, "title": "Relationship: DESCRIBES", "to": "class discussion highlight", "type": "DESCRIBES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Analysis", "smooth": {"type": "continuous"}, "title": "Relationship: PRECEDES", "to": "Presentation prep", "type": "PRECEDES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Data collection", "smooth": {"type": "continuous"}, "title": "Relationship: PRECEDES", "to": "Analysis", "type": "PRECEDES", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "neural network simulator", "smooth": {"type": "continuous"}, "title": "Relationship: RELATES_TO", "to": "implementing basic perceptron", "type": "RELATES_TO", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Brain Regions", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "Prefrontal Cortex", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Brain Regions", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "Parietal Lobe", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Brain Regions", "smooth": {"type": "continuous"}, "title": "Relationship: PART_OF", "to": "Anterior Cingulate", "type": "PART_OF", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "control_group", "smooth": {"type": "continuous"}, "title": "Relationship: RELATES_TO", "to": "7.2", "type": "RELATES_TO", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "Observations", "smooth": {"type": "continuous"}, "title": "Relationship: SUPPORTS", "to": "Need to incorporate these findings into final paper", "type": "SUPPORTS", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "experimental_group", "smooth": {"type": "continuous"}, "title": "Relationship: RELATES_TO", "to": "5.8", "type": "RELATES_TO", "width": 2}, {"arrows": "to", "color": {"color": "#848484", "opacity": 0.8}, "from": "p_value", "smooth": {"type": "continuous"}, "title": "Relationship: RELATES_TO", "to": "0.023", "type": "RELATES_TO", "width": 2}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"physics": {"enabled": true, "forceAtlas2Based": {"gravitationalConstant": -50, "springLength": 100, "springConstant": 0.08, "damping": 0.4, "avoidOverlap": 0.5}, "minVelocity": 0.75, "solver": "forceAtlas2Based"}, "interaction": {"hover": true, "navigationButtons": true, "keyboard": {"enabled": true}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    
+    <div style="position: absolute; top: 10px; right: 10px; padding: 10px; 
+         background-color: white; border: 1px solid #ddd; border-radius: 5px;">
+        <h3 style="margin: 0 0 10px 0;">Knowledge Graph Legend</h3>
+        <div style="display: flex; gap: 20px;">
+            <div>
+                <h4 style="margin: 5px 0;">Node Types</h4>
+                <ul style="list-style-type: none; padding: 0;">
+    
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 12px; height: 12px; 
+                      background-color: #b25c4c; border-radius: 50%; margin-right: 5px;"></span>
+                Variable
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 12px; height: 12px; 
+                      background-color: #cc656e; border-radius: 50%; margin-right: 5px;"></span>
+                Theory
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 12px; height: 12px; 
+                      background-color: #fc9e27; border-radius: 50%; margin-right: 5px;"></span>
+                Topic
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 12px; height: 12px; 
+                      background-color: #92654f; border-radius: 50%; margin-right: 5px;"></span>
+                Method
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 12px; height: 12px; 
+                      background-color: #cf1a05; border-radius: 50%; margin-right: 5px;"></span>
+                Finding
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 12px; height: 12px; 
+                      background-color: #9b51f0; border-radius: 50%; margin-right: 5px;"></span>
+                Concept
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 12px; height: 12px; 
+                      background-color: #96c5d2; border-radius: 50%; margin-right: 5px;"></span>
+                Study
+            </li>
+        
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin: 5px 0;">Relationship Types</h4>
+                <ul style="list-style-type: none; padding: 0;">
+    
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 20px; height: 2px; 
+                      background-color: #848484; margin-right: 5px;"></span>
+                PRECEDES
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 20px; height: 2px; 
+                      background-color: #848484; margin-right: 5px;"></span>
+                SUPPORTS
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 20px; height: 2px; 
+                      background-color: #848484; margin-right: 5px;"></span>
+                PART_OF
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 20px; height: 2px; 
+                      background-color: #848484; margin-right: 5px;"></span>
+                EXTENDS
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 20px; height: 2px; 
+                      background-color: #848484; margin-right: 5px;"></span>
+                RELATES_TO
+            </li>
+        
+            <li style="margin: 5px 0;">
+                <span style="display: inline-block; width: 20px; height: 2px; 
+                      background-color: #848484; margin-right: 5px;"></span>
+                DESCRIBES
+            </li>
+        
+                </ul>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

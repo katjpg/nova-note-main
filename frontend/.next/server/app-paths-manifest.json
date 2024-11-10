@@ -1,0 +1,6 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(routes)/progress/page": "app/(routes)/progress/page.js",
+  "/page": "app/page.js",
+  "/(routes)/decks/page": "app/(routes)/decks/page.js"
+}

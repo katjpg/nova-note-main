@@ -19,6 +19,8 @@ sys.path.append(str(src_path))
 
 # Import local modules
 from process import FilesProcessor
+from createDeck import router as deck_router
+from graph import router as graph_router
 
 # Configure logging
 logging.basicConfig(
@@ -534,8 +536,8 @@ def sanitize_filename(filename: str) -> str:
     # Replace invalid characters with underscore
     return "".join(c if c.isalnum() or c in ".-_" else "_" for c in filename)
 
-# Add to imports
-from graph import router as graph_router
 
-# Add to FastAPI app
-app.include_router(graph_router) 
+
+
+app.include_router(deck_router, prefix="/api")
+app.include_router(graph_router, prefix="/api")

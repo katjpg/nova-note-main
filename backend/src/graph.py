@@ -26,7 +26,7 @@ chroma_dir = project_root / "data" / "chroma"
 kg_output_dir = project_root.parent / "frontend" / "public"
 
 # Load environment variables
-load_dotenv(project_root / '.env')
+load_dotenv(project_root.parent / "backend" / '.env')
 
 # Academic domain ontology
 ACADEMIC_ONTOLOGY = {

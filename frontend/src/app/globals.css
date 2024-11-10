@@ -4,13 +4,19 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
+  --background-start: 240, 249, 255;  /* sky-50 */
+  --background-end: 255, 255, 255;    /* white */
 }
 
 body {
-  background: rgb(var(--background-rgb));
+  background: linear-gradient(
+    to bottom right,
+    rgb(var(--background-start)),
+    rgb(var(--background-end))
+  );
+  background-attachment: fixed;
+  min-height: 100vh;
 }
-
 /* Markdown Editor Customization */
 .w-md-editor {
   box-shadow: none !important;
